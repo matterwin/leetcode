@@ -1,5 +1,3 @@
-using namespace std;
-#define fast           ios_base::sync_with_stdio(false); cin.tie(NULL);
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -14,12 +12,11 @@ using namespace std;
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
-        fast;
         if (!root) return nullptr;
 
-        TreeNode* r = root->right;
-        root->right = root->left;
-        root->left = r;
+        TreeNode* l = root->left;
+        root->left = root->right;
+        root->right = l;
 
         invertTree(root->left);
         invertTree(root->right);
@@ -27,3 +24,4 @@ public:
         return root;
     }
 };
+

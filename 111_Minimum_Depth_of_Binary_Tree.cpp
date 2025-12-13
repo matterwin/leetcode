@@ -1,3 +1,9 @@
+#include <cstdio>
+#include <bits/stdc++.h>
+#include <stdio.h>
+using namespace std;
+#define fast           ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -11,8 +17,15 @@
  */
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
+    int minDepth(TreeNode* root) {
         if (!root) return 0;
-        return 1 + max(maxDepth(root->left), maxDepth(root->right));
+
+        if (!root->right)
+            return 1 + minDepth(root->left);
+        if (!root->left)
+            return 1 + minDepth(root->right);
+
+        return 1 + min(minDepth(root->right), minDepth(root->left));
     }
 };
+

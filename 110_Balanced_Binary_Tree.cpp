@@ -15,18 +15,25 @@ using namespace std;
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution 
-{
+class Solution {
 public:
-    vector<int> ans;
-    vector<int> inorderTraversal(TreeNode* root) 
+    int getDepth(TreeNode* root, bool* flag)
     {
-        if (!root) return ans;               
+        if (!root) return 0;
 
-        inorderTraversal(root->left);
-        ans.push_back(root->val);
-        inorderTraversal(root->right);
+        int left_depth = getDepth(root->left, flag); 
+        int right_depth = getDepth(root->right, flag); 
 
-        return ans;
+        if (abs(left_depth - right_depth) > 1) *flag = false;
+
+        return 1 + left_depth + right_depth;
+    }
+    bool isBalanced(TreeNode* root) {
+        fast;
+        if (!root) return true;
+        bool flag = true;
+        getDepth(root, &flag);
+        return flag;
     }
 };
+

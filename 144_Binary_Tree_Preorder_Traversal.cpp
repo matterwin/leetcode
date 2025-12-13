@@ -11,11 +11,17 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if (p && !q) return false; 
-        if (!p && q) return false;
-        if (!p || !q) return true;
+    void dfs(TreeNode* root, vector<int> &ret)
+    {
+        if (!root) return;
 
-        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        ret.push_back(root->val);
+        dfs(root->left, ret);
+        dfs(root->right, ret);
+    }
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        dfs(root, ret);
+        return ret;
     }
 };

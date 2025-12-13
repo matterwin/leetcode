@@ -11,11 +11,15 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if (p && !q) return false; 
-        if (!p && q) return false;
-        if (!p || !q) return true;
+    bool p(TreeNode* root, int targetSum) {
+        if (!root) return false;
+        if (!root->left && !root->right)
+            return targetSum == root->val;
 
-        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        int rem = targetSum - root->val;
+        return p(root->left, rem) || p(root->right, rem);
+    }
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        return p(root, targetSum);
     }
 };
