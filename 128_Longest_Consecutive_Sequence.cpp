@@ -1,47 +1,35 @@
-#include <bits/stdc++.h>
-#include <cstdio>
-#include <stdio.h>
+#include <vector>
 #include <unordered_set>
-#include <algorithm>
 using namespace std;
-#define fast           ios_base::sync_with_stdio(false); cin.tie(NULL);
-#define cy             cout<<"YES\n"
-#define cn             cout<<"NO\n"
-#define nl             cout<<"\n"
-#define fset(arr, val) memset(arr, val, sizeof(arr))
-#define fset(arr, val) memset(arr, val, sizeof(arr))
-#define fcopy(dest, src) memcpy(dest, src, sizeof(dest))
-#define fmove(dest, src) memmove(dest, src, sizeof(dest))
-#define fcmp(arr1, arr2) memcmp(arr1, arr2, sizeof(arr1))
-#define sci(x) scanf("%d", &x)
-#define scll(x) scanf("%lld", &x)
-#define scs(str) scanf("%s", str)
-#define scf(x) scanf("%f", &x)
-#define scd(x) scanf("%lf", &x)
-#define scc(x) scanf(" %c", &x)
-#define ABS(x) ((x) < 0 ? -(x) : (x))
-#define prv1d(vec) for (const auto& x : vec) std::cout << x << " "; std::cout << "\n";
-#define prv2d(vec2d) do { for (const auto& row : vec2d) { for (const auto& x : row) std::cout << x << " "; std::cout << "\n"; } } while(0)
 
 class Solution {
 public:
-    int longestConsecutive(vector<int>& nums) {
-        fast;
-        unordered_set<int> st(nums.begin(), nums.end());
-        int cnt = 0;
-        for (int n : st)
+    int longestConsecutive(vector<int>& nums) 
+    {
+        unordered_set<int> st;
+        for (int n : nums) st.insert(n);
+
+        int ret = 0;
+        for (int num : st)
         {
-            if (st.find(n - 1) == st.end())
+            // only start at nums that are beg of a seq
+            if (st.find(num - 1) == st.end()) 
             {
-                int cur_cnt = 1;
-                while (st.find(n + 1) != st.end())
+                int len = 1;
+                int rhs = num + 1;
+                while (st.find(rhs) != st.end()) 
                 {
-                    cur_cnt++;
-                    n++;
+                    ++len;
+                    ++rhs;
                 }
-                cnt = max(cnt, cur_cnt);
+
+                ret = max(ret, len);
             }
         }
-        return cnt;
+
+        return ret;
     }
 };
+
+
+
