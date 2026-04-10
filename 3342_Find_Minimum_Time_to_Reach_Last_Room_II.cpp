@@ -8,21 +8,19 @@ public:
         dist[0][0] = 0;
         
         priority_queue<
-            tuple<int,int,int>,
-            vector<tuple<int,int,int>>,
-            greater<>
+            tuple<int, int, int, int>,
+            vector<tuple<int, int, int, int>>,
+            greater<tuple<int, int, int, int>>
         > pq;
 
-        pq.push({0, 0, 0});
+        pq.push({0, 0, 0, 0});
 
         vector<int> dr = {-1, 1, 0, 0};
         vector<int> dc = {0, 0, -1, 1};
 
-        bool flag = true;
-
         while (!pq.empty()) 
         {
-            auto [time, r, c] = pq.top();
+            auto [time, r, c, alt] = pq.top();
             pq.pop();
 
             if (time > dist[r][c]) continue;
@@ -37,14 +35,13 @@ public:
 
                 if (nr >= 0 && nr < n && nc >= 0 && nc < m) 
                 {
-                    int at = flag ? 1 : 2;
-                    int newTime = max(moveTime[nr][nc], time) + at;
-                    flag = !flag;
+                    int add_time = alt & 1;
+                    int newTime = max(moveTime[nr][nc], time) + 1 + add_time;
 
                     if (newTime < dist[nr][nc]) 
                     {
                         dist[nr][nc] = newTime;
-                        pq.push({newTime, nr, nc});
+                        pq.push({newTime, nr, nc, alt ^ 1});
                     }
                 }
             }

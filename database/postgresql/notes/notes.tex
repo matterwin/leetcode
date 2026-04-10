@@ -1,0 +1,753 @@
+\documentclass[10pt]{article}
+\usepackage{arydshln}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage{natbib}
+\usepackage{url}
+
+% Citing how to
+% \nocite{*}
+% \bibliographystyle{plain}
+% \bibliography{refs}
+% \cite{ref of cite}
+
+% ---- Macros ----
+\newcommand{\myhrule}[1]{%
+  \vspace{#1}%
+  \noindent\hrule
+  \vspace{#1}%
+}
+\makeatletter
+\newcommand{\bern}{%
+  \begin{enumerate}%
+  \renewcommand{\labelenumi}{\roman{enumi}.}%
+}
+\newcommand{\eern}{%
+  \end{enumerate}%
+}
+\makeatother
+\newcommand{\FlaThreeByThreeTL}[9]{%
+\left(
+\begin{array}{cc|c}
+#1 & #2 & #3\\
+#4 & #5 & #6\\
+\hline
+#7 & #8 & #9
+\end{array}
+\right)%
+}
+\tcbuselibrary{breakable}
+\newcommand{\boxedtext}[1]{%
+\begin{tcolorbox}[
+    colback=white,
+    colframe=black,
+    sharp corners,
+    boxrule=0.5pt,
+    breakable
+]%
+#1
+\end{tcolorbox}%
+}
+\newcommand{\bt}[1]{%
+\begin{tcolorbox}[
+    colback=white,
+    colframe=black,
+    sharp corners,
+    boxrule=0.5pt,
+    breakable
+]%
+#1
+\end{tcolorbox}%
+}
+\newcommand{\FlaTwoByOne}[2]{%
+\left(
+\begin{array}{c}
+#1\\
+\hline
+#2
+\end{array}
+\right)%
+}
+\newcommand{\FlaThreeByOneB}[3]{%
+\left(
+\begin{array}{c}
+#1\\
+\hline
+#2\\
+#3
+\end{array}
+\right)%
+}
+\newcommand{\FlaTwoByTwoSingleLine}[4]{%
+\left(
+\begin{array}{cc}
+#1 & #2\\
+#3 & #4
+\end{array}
+\right)%
+}
+\newcommand{\complexpm}{\boxed{\pm}}
+\newcommand{\FlaOneByTwoSingleLine}[2]{%
+\left(
+\begin{array}{cc}
+    #1 & #2
+\end{array}
+\right)%
+}
+\newcommand{\FlaTwoByOneSingleLine}[2]{%
+\left(
+\begin{array}{cc}
+#1\\
+#2
+\end{array}
+\right)%
+}
+\newcommand{\FlaThreeByThreeBR}[9]{%
+\left(
+\begin{array}{c|cc}
+#1 & #2 & #3 \\ \hline
+#4 & #5 & #6 \\
+#7 & #8 & #9
+\end{array}
+\right)%
+}
+\newcommand{\FlaTwoByTwo}[4]{%
+\left(
+\begin{array}{c|c}
+#1 & #2 \\
+\hline
+#3 & #4
+\end{array}
+\right)
+}
+\newcommand{\FlaOneByThreeR}[3]{%
+\left(
+\begin{array}{c|cc}
+#1 & #2 & #3
+\end{array}
+\right)%
+}
+\newcommand{\FlaOneByTwo}[2]{%
+\left(
+\begin{array}{c|c}
+#1 & #2
+\end{array}
+\right)%
+}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\pbreak}{\vspace{30pt}}
+\newcommand{\ud}[1]{\underline{#1}}
+\newcommand{\ital}[1]{\textit{#1}}
+\newcommand{\fb}[1]{\fbox{#1}}
+\newcommand{\vocab}[1]{\fbox{\textbf{\textit{#1}}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mb}{\mathbf}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}
+\newcommand{\h}[1]{\textbf{\fbox{#1}}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Null}{\mathcal{N}}
+\newcommand{\amp}{&}
+\newcommand{\tpose}{^{\top}}
+\newcommand{\ident}[1][]{\mathbf{I}_{#1}}
+\newcommand{\defeq}{\overset{\cdot}{=}}
+\newcommand{\sbsi}[4]{%
+	\begin{center}
+   		\begin{minipage}{0.5\textwidth}
+      			\centering
+      			\includegraphics[width=#2\textwidth]{#1}
+    		\end{minipage}%
+    		\begin{minipage}{0.5\textwidth}
+      			\centering
+      			\includegraphics[width=#4\textwidth]{#3}
+		\end{minipage}
+ 	\end{center}
+}
+\newcommand{\ci}[2]{%
+  \begin{center}
+	\includegraphics[width=#2\textwidth]{#1}
+  \end{center}
+}
+\newcommand{\cii}[4]{%
+  \begin{center}
+    \includegraphics[width=#2\textwidth]{#1}\hfill
+    \includegraphics[width=#4\textwidth]{#3}
+  \end{center}
+}
+\newcommand{\newbp}{%
+  \newpage
+  \mbox{}
+  \newpage
+}
+\newcommand{\formbox}[1]{%
+  \begin{center}
+    \fbox{\parbox{0.95\linewidth}{\[
+      #1
+    \]}}
+  \end{center}
+}
+\newcommand{\euler}{\mathrm{e}}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\al}[1]{\ensuremath{\begin{aligned}#1\end{aligned}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\rightarrowname}[1]{\ensuremath{\xrightarrow{\text{#1}}}}
+\newcommand{\leftarrowname}[1]{\ensuremath{\xleftarrow{\text{#1}}}}
+\newcommand{\lt}{<}
+\newcommand{\gt}{>}
+\setlength{\parindent}{0pt}
+\newcommand{\tab}{\hspace*{2em}}
+\newcommand{\pause}{}
+% ------------------------------
+\DeclareMathSizes{10}{13}{8}{8}
+
+% optionally:
+% \setcounter{secnumdepth}{0} % removes section numbers
+\renewcommand{\arraystretch}{1.5}
+% \DeclareMathSizes{<text size>}{<math size>}{<script size>}{<scriptscript size>}
+
+\title{PostgreSQL notes}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Commands}
+\newpage
+\section{PostgreSQL Commands (Comprehensive Cheat Sheet)}
+
+% ================= SELECT =================
+\newpage
+\subsection{SELECT}
+\begin{itemize}
+    \item Purpose: Retrieve data from one or more tables.
+\end{itemize}
+
+\begin{verbatim}
+SELECT * FROM employees;
+
+SELECT name, salary
+FROM employees
+WHERE salary > 50000;
+\end{verbatim}
+
+% ================= WHERE =================
+\newpage
+\subsection{WHERE}
+\begin{itemize}
+    \item Purpose: Filter rows based on conditions.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE department = 'Engineering'
+  AND salary > 70000;
+\end{verbatim}
+
+% ================= ORDER BY =================
+\newpage
+\subsection{ORDER BY}
+\begin{itemize}
+    \item Purpose: Sort results ascending or descending.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+ORDER BY salary DESC;
+\end{verbatim}
+
+% ================= DISTINCT =================
+\newpage
+\subsection{DISTINCT}
+\begin{itemize}
+    \item Purpose: Remove duplicates.
+\end{itemize}
+
+\begin{verbatim}
+SELECT DISTINCT department
+FROM employees;
+\end{verbatim}
+
+% ================= LIMIT / OFFSET =================
+\newpage
+\subsection{LIMIT / OFFSET}
+\begin{itemize}
+    \item Purpose: Restrict number of rows and paginate results.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+LIMIT 10 OFFSET 20;
+\end{verbatim}
+
+% ================= GROUP BY =================
+\newpage
+\subsection{GROUP BY}
+\begin{itemize}
+    \item Purpose: Aggregate rows into groups.
+\end{itemize}
+
+\begin{verbatim}
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department;
+\end{verbatim}
+
+% ================= HAVING =================
+\newpage
+\subsection{HAVING}
+\begin{itemize}
+    \item Purpose: Filter aggregated groups.
+\end{itemize}
+
+\begin{verbatim}
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 5;
+\end{verbatim}
+
+% ================= JOINS =================
+\newpage
+\subsection{INNER JOIN}
+\begin{itemize}
+    \item Purpose: Only matching rows between tables.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+INNER JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\newpage
+\subsection{LEFT JOIN}
+\begin{itemize}
+    \item Purpose: All left table rows + matches from right.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+LEFT JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\newpage
+\subsection{RIGHT JOIN}
+\begin{itemize}
+    \item Purpose: All right table rows + matches from left.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+RIGHT JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\newpage
+\subsection{FULL OUTER JOIN}
+\begin{itemize}
+    \item Purpose: All rows from both tables.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+FULL OUTER JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+% ================= INSERT =================
+\newpage
+\subsection{INSERT}
+\begin{itemize}
+    \item Purpose: Insert new rows.
+\end{itemize}
+
+\begin{verbatim}
+INSERT INTO employees (name, salary)
+VALUES ('Alice', 90000);
+\end{verbatim}
+
+% ================= UPDATE =================
+\newpage
+\subsection{UPDATE}
+\begin{itemize}
+    \item Purpose: Modify existing rows.
+\end{itemize}
+
+\begin{verbatim}
+UPDATE employees
+SET salary = salary * 1.1
+WHERE department = 'Engineering';
+\end{verbatim}
+
+% ================= DELETE =================
+\newpage
+\subsection{DELETE}
+\begin{itemize}
+    \item Purpose: Remove rows.
+\end{itemize}
+
+\begin{verbatim}
+DELETE FROM employees
+WHERE id = 10;
+\end{verbatim}
+
+% ================= CASE =================
+\newpage
+\subsection{CASE WHEN}
+\begin{itemize}
+    \item Purpose: Conditional logic in queries.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name,
+       CASE
+           WHEN salary > 100000 THEN 'High'
+           WHEN salary > 50000 THEN 'Medium'
+           ELSE 'Low'
+       END AS salary_level
+FROM employees;
+\end{verbatim}
+
+% ================= IN =================
+\newpage
+\subsection{IN}
+\begin{itemize}
+    \item Purpose: Match against multiple values.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE department IN ('Engineering', 'HR');
+\end{verbatim}
+
+% ================= BETWEEN =================
+\newpage
+\subsection{BETWEEN}
+\begin{itemize}
+    \item Purpose: Range filtering.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE salary BETWEEN 50000 AND 100000;
+\end{verbatim}
+
+% ================= LIKE =================
+\newpage
+\subsection{LIKE}
+\begin{itemize}
+    \item Purpose: Pattern matching.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE name LIKE 'A%';
+\end{verbatim}
+
+% ================= NULL CHECK =================
+\newpage
+\subsection{NULL CHECK}
+\begin{itemize}
+    \item Purpose: Check missing values.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE manager_id IS NULL;
+\end{verbatim}
+
+% ================= AGGREGATES =================
+\newpage
+\subsection{Aggregate Functions}
+\begin{itemize}
+    \item Purpose: Compute summary statistics.
+\end{itemize}
+
+\begin{verbatim}
+SELECT
+    COUNT(*),
+    SUM(salary),
+    AVG(salary),
+    MAX(salary),
+    MIN(salary)
+FROM employees;
+\end{verbatim}
+
+% ================= WINDOW FUNCTIONS =================
+\newpage
+\subsection{Window Functions}
+\begin{itemize}
+    \item Purpose: Compute values across partitions without collapsing rows.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name,
+       salary,
+       RANK() OVER (PARTITION BY department ORDER BY salary DESC)
+FROM employees;
+\end{verbatim}
+
+% ================= CTE =================
+\newpage
+\subsection{WITH (CTE)}
+\begin{itemize}
+    \item Purpose: Create temporary named result sets.
+\end{itemize}
+
+\begin{verbatim}
+WITH high_salary AS (
+    SELECT *
+    FROM employees
+    WHERE salary > 100000
+)
+SELECT * FROM high_salary;
+\end{verbatim}
+
+% ================= SUBQUERY =================
+\newpage
+\subsection{Subqueries}
+\begin{itemize}
+    \item Purpose: Nest queries inside another query.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+\end{verbatim}
+
+% ================= UNION =================
+\newpage
+\subsection{UNION / UNION ALL}
+\begin{itemize}
+    \item Purpose: Combine results of multiple queries.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name FROM employees
+UNION
+SELECT name FROM contractors;
+\end{verbatim}
+
+% ================= EXISTS =================
+\newpage
+\subsection{EXISTS}
+\begin{itemize}
+    \item Purpose: Check existence of rows in subquery.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name
+FROM employees e
+WHERE EXISTS (
+    SELECT 1
+    FROM departments d
+    WHERE d.id = e.department_id
+);
+\end{verbatim}
+
+% ================= INDEX =================
+\newpage
+\subsection{INDEX}
+\begin{itemize}
+    \item Purpose: Speed up queries.
+\end{itemize}
+
+\begin{verbatim}
+CREATE INDEX idx_salary
+ON employees(salary);
+\end{verbatim}
+
+% ================= TRANSACTIONS =================
+\newpage
+\subsection{Transactions}
+\begin{itemize}
+    \item Purpose: Ensure atomic operations.
+\end{itemize}
+
+\begin{verbatim}
+BEGIN;
+
+UPDATE employees SET salary = salary * 1.1;
+
+COMMIT;
+\end{verbatim}
+
+\newpage 
+\subsection{ALTER TABLE}
+\subsection{DROP TABLE}
+\subsection{TRUNCATE}
+\subsection{CREATE TABLE}
+\subsection{CREATE DATABASE}
+\subsection{CREATE VIEW}
+\subsection{DROP VIEW}
+\subsection{INSERT INTO ... ON CONFLICT}
+\subsection{UPSERT (ON CONFLICT DO UPDATE)}
+\subsection{MERGE}
+\subsection{RETURNING}
+\subsection{COALESCE}
+\subsection{NULLIF}
+\subsection{CAST}
+\subsection{:: type casting}
+\subsection{STRING FUNCTIONS (CONCAT, SUBSTRING, LENGTH)}
+\subsection{DATE FUNCTIONS (NOW, CURRENT\_DATE, AGE)}
+\subsection{INTERVAL}
+\subsection{ARRAYS}
+\subsection{UNNEST}
+\subsection{JSON / JSONB OPERATIONS}
+\subsection{CTE RECURSIVE}
+\subsection{WINDOW FUNCTIONS (LEAD)}
+\subsection{WINDOW FUNCTIONS (LAG)}
+\subsection{NTILE}
+\subsection{ROW\_NUMBER}
+\subsection{RANK}
+\subsection{DENSE\_RANK}
+\subsection{PARTITION BY}
+\subsection{OVER CLAUSE}
+\subsection{EXPLAIN}
+\subsection{EXPLAIN ANALYZE}
+\subsection{VACUUM}
+\subsection{ANALYZE}
+\subsection{REINDEX}
+\subsection{GRANT}
+\subsection{REVOKE}
+
+\newbp 
+\section{General}
+
+\subsection{General Structure of a SQL Query}
+\begin{itemize}
+\item A SQL query follows a logical execution order, which is different from how it is written.
+\end{itemize}
+
+\begin{verbatim}
+SELECT columns
+FROM table
+JOIN other_table
+ON join_condition
+WHERE row_filter
+GROUP BY grouping_columns
+HAVING group_filter
+ORDER BY sorting_columns
+LIMIT number_of_rows;
+\end{verbatim}
+
+\begin{itemize}
+\item Logical execution order:
+    \begin{itemize}
+    \item FROM (choose tables)
+    \item JOIN (combine tables)
+    \item WHERE (filter rows)
+    \item GROUP BY (group rows)
+    \item HAVING (filter groups)
+    \item SELECT (choose columns / expressions)
+    \item ORDER BY (sort results)
+    \item LIMIT (restrict output)
+    \end{itemize}
+\item Important: The written order is NOT the execution order.
+\end{itemize}
+
+\newpage
+\subsection{Join Differences}
+The matches will fill in a NULL value for entries that don't have a match\\ 
+(in the case of like all left or all right).
+\begin{itemize}
+\item INNER JOIN -- only matches
+\item LEFT JOIN -- all left + matches
+\item RIGHT JOIN -- all right + matches
+\item FULL JOIN -- all rows from both sides
+\end{itemize}
+
+\subsection{NULL Behavior}
+NULL means "unknown value" and behaves differently from normal values.
+\begin{itemize}
+\item Use IS NULL / IS NOT NULL (NOT =)
+\item NULL in comparisons results in UNKNOWN (not true/false)
+\item Aggregates ignore NULL values (except COUNT(*))
+\end{itemize}
+
+\subsection{WHERE vs HAVING}
+\begin{itemize}
+\item WHERE filters rows BEFORE grouping
+\item HAVING filters AFTER GROUP BY
+\end{itemize}
+
+\subsection{GROUP BY Rule}
+\begin{itemize}
+\item Every selected column must be either:
+    \begin{itemize}
+    \item in GROUP BY
+    \item or an aggregate function (COUNT, MAX, etc.)
+    \end{itemize}
+\end{itemize}
+
+\subsection{ORDER BY vs GROUP BY}
+\begin{itemize}
+\item GROUP BY = aggregates rows
+\item ORDER BY = sorts final result
+\end{itemize}
+
+\subsection{COUNT Differences}
+\begin{itemize}
+\item COUNT(*) counts all rows
+\item COUNT(column) ignores NULL values
+\end{itemize}
+
+\subsection{DISTINCT}
+\begin{itemize}
+\item Removes duplicate rows from result
+\item Works on entire selected row combination
+\end{itemize}
+
+\subsection{JOIN Condition}
+\begin{itemize}
+\item ON clause defines how tables match
+\item Missing or wrong ON can cause Cartesian product (explosion of rows)
+\end{itemize}
+
+\subsection{Cartesian Product}
+\begin{itemize}
+\item Occurs when JOIN has no condition
+\item Every row combines with every other row
+\item Avoid unless intentionally using CROSS JOIN
+\end{itemize}
+
+\subsection{Aliases}
+\begin{itemize}
+\item Temporary names for tables or columns
+\item Improves readability and reduces repetition
+\end{itemize}
+
+\end{document}
+
+

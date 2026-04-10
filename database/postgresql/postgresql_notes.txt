@@ -1,0 +1,4 @@
+INNER JOIN → only matches
+LEFT JOIN → all left + matches
+RIGHT JOIN → all right + matches
+FULL JOIN → all rows from both sides

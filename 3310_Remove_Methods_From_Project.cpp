@@ -1,56 +1,37 @@
-#include <bits/stdc++.h>
-using namespace std;
 class Solution {
 public:
-    bool dfs_rest(int cur, vector<vector<int>>& adj, vector<bool>& visited, vector<bool>& touched_by_k)
-    {
-        if (visited[cur]) return false;
+    void dfs_k(int cur, vector<vector<int>>& adj, vector<bool>& visited) {
+        if (visited[cur]) return;
         visited[cur] = true;
-        if (touched_by_k[cur])
-            return true;
 
-        bool touched_k = false;
-        for (int next : adj[cur])
-            touched_k = touched_k || dfs_rest(next, adj, visited, touched_by_k);
-
-        if (touched_k)
-            touched_by_k[cur] = true;
-
-        return touched_k;
-    }
-    void dfs_k(int cur, vector<vector<int>>& adj, vector<bool>& touched_by_k)
-    {
-        if (touched_by_k[cur]) return;
-        touched_by_k[cur] = true;
-
-        for (int next : adj[cur])
-            dfs_k(next, adj, touched_by_k);
+        for (auto next : adj[cur])
+            dfs_k(next, adj, visited);
     }
 
     vector<int> remainingMethods(int n, int k, vector<vector<int>>& invocations) {
         vector<vector<int>> adj(n);
-        for (auto invo : invocations)
-            adj[invo[0]].push_back(invo[1]);
+        for (auto& in : invocations)
+            adj[in[0]].push_back(in[1]);
 
-        int cnt = 0;
         vector<bool> touched_by_k(n, false);
         dfs_k(k, adj, touched_by_k);
 
-        vector<int> ret;
-        vector<bool> visited(n, false);
-        for (int i = 0; i < n; ++i)
-            if (!visited[i] && !touched_by_k[i])
-                dfs_rest(i, adj, visited, touched_by_k);
-
-        for (int i = 0; i < n; ++i)
-        {
-            cout << i << ": ";
-            if (touched_by_k[i])
-                cout << "no" << endl;
+        // If ∃ an edge from outside into k’s component,
+        // then nothing can be erased.
+        for (auto& in : invocations) {
+            int u = in[0], v = in[1];
+            if (!touched_by_k[u] && touched_by_k[v]) {
+                vector<int> all(n);
+                iota(all.begin(), all.end(), 0);
+                return all;
+            }
         }
+
+        vector<int> ret;
+        for (int i = 0; i < n; ++i)
+            if (!touched_by_k[i])
+                ret.push_back(i);
 
         return ret;
     }
 };
-
-
