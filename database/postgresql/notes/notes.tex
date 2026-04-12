@@ -231,7 +231,6 @@
 \section{PostgreSQL Commands (Comprehensive Cheat Sheet)}
 
 % ================= SELECT =================
-\newpage
 \subsection{SELECT}
 \begin{itemize}
     \item Purpose: Retrieve data from one or more tables.
@@ -246,7 +245,6 @@ WHERE salary > 50000;
 \end{verbatim}
 
 % ================= WHERE =================
-\newpage
 \subsection{WHERE}
 \begin{itemize}
     \item Purpose: Filter rows based on conditions.
@@ -260,7 +258,6 @@ WHERE department = 'Engineering'
 \end{verbatim}
 
 % ================= ORDER BY =================
-\newpage
 \subsection{ORDER BY}
 \begin{itemize}
     \item Purpose: Sort results ascending or descending.
@@ -273,7 +270,6 @@ ORDER BY salary DESC;
 \end{verbatim}
 
 % ================= DISTINCT =================
-\newpage
 \subsection{DISTINCT}
 \begin{itemize}
     \item Purpose: Remove duplicates.
@@ -285,7 +281,6 @@ FROM employees;
 \end{verbatim}
 
 % ================= LIMIT / OFFSET =================
-\newpage
 \subsection{LIMIT / OFFSET}
 \begin{itemize}
     \item Purpose: Restrict number of rows and paginate results.
@@ -298,7 +293,6 @@ LIMIT 10 OFFSET 20;
 \end{verbatim}
 
 % ================= GROUP BY =================
-\newpage
 \subsection{GROUP BY}
 \begin{itemize}
     \item Purpose: Aggregate rows into groups.
@@ -311,7 +305,6 @@ GROUP BY department;
 \end{verbatim}
 
 % ================= HAVING =================
-\newpage
 \subsection{HAVING}
 \begin{itemize}
     \item Purpose: Filter aggregated groups.
@@ -325,7 +318,9 @@ HAVING COUNT(*) > 5;
 \end{verbatim}
 
 % ================= JOINS =================
-\newpage
+\subsection{JOIN}
+idk what default is here.
+
 \subsection{INNER JOIN}
 \begin{itemize}
     \item Purpose: Only matching rows between tables.
@@ -338,7 +333,6 @@ INNER JOIN departments d
 ON e.department_id = d.id;
 \end{verbatim}
 
-\newpage
 \subsection{LEFT JOIN}
 \begin{itemize}
     \item Purpose: All left table rows + matches from right.
@@ -351,7 +345,6 @@ LEFT JOIN departments d
 ON e.department_id = d.id;
 \end{verbatim}
 
-\newpage
 \subsection{RIGHT JOIN}
 \begin{itemize}
     \item Purpose: All right table rows + matches from left.
@@ -364,7 +357,6 @@ RIGHT JOIN departments d
 ON e.department_id = d.id;
 \end{verbatim}
 
-\newpage
 \subsection{FULL OUTER JOIN}
 \begin{itemize}
     \item Purpose: All rows from both tables.
@@ -378,7 +370,6 @@ ON e.department_id = d.id;
 \end{verbatim}
 
 % ================= INSERT =================
-\newpage
 \subsection{INSERT}
 \begin{itemize}
     \item Purpose: Insert new rows.
@@ -390,7 +381,6 @@ VALUES ('Alice', 90000);
 \end{verbatim}
 
 % ================= UPDATE =================
-\newpage
 \subsection{UPDATE}
 \begin{itemize}
     \item Purpose: Modify existing rows.
@@ -403,7 +393,6 @@ WHERE department = 'Engineering';
 \end{verbatim}
 
 % ================= DELETE =================
-\newpage
 \subsection{DELETE}
 \begin{itemize}
     \item Purpose: Remove rows.
@@ -415,7 +404,6 @@ WHERE id = 10;
 \end{verbatim}
 
 % ================= CASE =================
-\newpage
 \subsection{CASE WHEN}
 \begin{itemize}
     \item Purpose: Conditional logic in queries.
@@ -432,7 +420,6 @@ FROM employees;
 \end{verbatim}
 
 % ================= IN =================
-\newpage
 \subsection{IN}
 \begin{itemize}
     \item Purpose: Match against multiple values.
@@ -445,7 +432,6 @@ WHERE department IN ('Engineering', 'HR');
 \end{verbatim}
 
 % ================= BETWEEN =================
-\newpage
 \subsection{BETWEEN}
 \begin{itemize}
     \item Purpose: Range filtering.
@@ -458,7 +444,6 @@ WHERE salary BETWEEN 50000 AND 100000;
 \end{verbatim}
 
 % ================= LIKE =================
-\newpage
 \subsection{LIKE}
 \begin{itemize}
     \item Purpose: Pattern matching.
@@ -471,7 +456,6 @@ WHERE name LIKE 'A%';
 \end{verbatim}
 
 % ================= NULL CHECK =================
-\newpage
 \subsection{NULL CHECK}
 \begin{itemize}
     \item Purpose: Check missing values.
@@ -484,7 +468,6 @@ WHERE manager_id IS NULL;
 \end{verbatim}
 
 % ================= AGGREGATES =================
-\newpage
 \subsection{Aggregate Functions}
 \begin{itemize}
     \item Purpose: Compute summary statistics.
@@ -501,7 +484,6 @@ FROM employees;
 \end{verbatim}
 
 % ================= WINDOW FUNCTIONS =================
-\newpage
 \subsection{Window Functions}
 \begin{itemize}
     \item Purpose: Compute values across partitions without collapsing rows.
@@ -515,7 +497,6 @@ FROM employees;
 \end{verbatim}
 
 % ================= CTE =================
-\newpage
 \subsection{WITH (CTE)}
 \begin{itemize}
     \item Purpose: Create temporary named result sets.
@@ -547,7 +528,6 @@ WHERE salary > (
 \end{verbatim}
 
 % ================= UNION =================
-\newpage
 \subsection{UNION / UNION ALL}
 \begin{itemize}
     \item Purpose: Combine results of multiple queries.
@@ -560,7 +540,6 @@ SELECT name FROM contractors;
 \end{verbatim}
 
 % ================= EXISTS =================
-\newpage
 \subsection{EXISTS}
 \begin{itemize}
     \item Purpose: Check existence of rows in subquery.
@@ -577,7 +556,6 @@ WHERE EXISTS (
 \end{verbatim}
 
 % ================= INDEX =================
-\newpage
 \subsection{INDEX}
 \begin{itemize}
     \item Purpose: Speed up queries.
@@ -589,7 +567,6 @@ ON employees(salary);
 \end{verbatim}
 
 % ================= TRANSACTIONS =================
-\newpage
 \subsection{Transactions}
 \begin{itemize}
     \item Purpose: Ensure atomic operations.

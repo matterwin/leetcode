@@ -1,78 +1,78 @@
 \contentsline {section}{\numberline {1}Commands}{3}{section.1}%
 \contentsline {section}{\numberline {2}PostgreSQL Commands (Comprehensive Cheat Sheet)}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}SELECT}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}WHERE}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}ORDER BY}{7}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}DISTINCT}{8}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}LIMIT / OFFSET}{9}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}GROUP BY}{10}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}HAVING}{11}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}INNER JOIN}{12}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}LEFT JOIN}{13}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}RIGHT JOIN}{14}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}FULL OUTER JOIN}{15}{subsection.2.11}%
-\contentsline {subsection}{\numberline {2.12}INSERT}{16}{subsection.2.12}%
-\contentsline {subsection}{\numberline {2.13}UPDATE}{17}{subsection.2.13}%
-\contentsline {subsection}{\numberline {2.14}DELETE}{18}{subsection.2.14}%
-\contentsline {subsection}{\numberline {2.15}CASE WHEN}{19}{subsection.2.15}%
-\contentsline {subsection}{\numberline {2.16}IN}{20}{subsection.2.16}%
-\contentsline {subsection}{\numberline {2.17}BETWEEN}{21}{subsection.2.17}%
-\contentsline {subsection}{\numberline {2.18}LIKE}{22}{subsection.2.18}%
-\contentsline {subsection}{\numberline {2.19}NULL CHECK}{23}{subsection.2.19}%
-\contentsline {subsection}{\numberline {2.20}Aggregate Functions}{24}{subsection.2.20}%
-\contentsline {subsection}{\numberline {2.21}Window Functions}{25}{subsection.2.21}%
-\contentsline {subsection}{\numberline {2.22}WITH (CTE)}{26}{subsection.2.22}%
-\contentsline {subsection}{\numberline {2.23}Subqueries}{27}{subsection.2.23}%
-\contentsline {subsection}{\numberline {2.24}UNION / UNION ALL}{28}{subsection.2.24}%
-\contentsline {subsection}{\numberline {2.25}EXISTS}{29}{subsection.2.25}%
-\contentsline {subsection}{\numberline {2.26}INDEX}{30}{subsection.2.26}%
-\contentsline {subsection}{\numberline {2.27}Transactions}{31}{subsection.2.27}%
-\contentsline {subsection}{\numberline {2.28}ALTER TABLE}{33}{subsection.2.28}%
-\contentsline {subsection}{\numberline {2.29}DROP TABLE}{33}{subsection.2.29}%
-\contentsline {subsection}{\numberline {2.30}TRUNCATE}{33}{subsection.2.30}%
-\contentsline {subsection}{\numberline {2.31}CREATE TABLE}{33}{subsection.2.31}%
-\contentsline {subsection}{\numberline {2.32}CREATE DATABASE}{33}{subsection.2.32}%
-\contentsline {subsection}{\numberline {2.33}CREATE VIEW}{33}{subsection.2.33}%
-\contentsline {subsection}{\numberline {2.34}DROP VIEW}{33}{subsection.2.34}%
-\contentsline {subsection}{\numberline {2.35}INSERT INTO ... ON CONFLICT}{33}{subsection.2.35}%
-\contentsline {subsection}{\numberline {2.36}UPSERT (ON CONFLICT DO UPDATE)}{33}{subsection.2.36}%
-\contentsline {subsection}{\numberline {2.37}MERGE}{33}{subsection.2.37}%
-\contentsline {subsection}{\numberline {2.38}RETURNING}{33}{subsection.2.38}%
-\contentsline {subsection}{\numberline {2.39}COALESCE}{33}{subsection.2.39}%
-\contentsline {subsection}{\numberline {2.40}NULLIF}{33}{subsection.2.40}%
-\contentsline {subsection}{\numberline {2.41}CAST}{33}{subsection.2.41}%
-\contentsline {subsection}{\numberline {2.42}:: type casting}{33}{subsection.2.42}%
-\contentsline {subsection}{\numberline {2.43}STRING FUNCTIONS (CONCAT, SUBSTRING, LENGTH)}{33}{subsection.2.43}%
-\contentsline {subsection}{\numberline {2.44}DATE FUNCTIONS (NOW, CURRENT\_DATE, AGE)}{33}{subsection.2.44}%
-\contentsline {subsection}{\numberline {2.45}INTERVAL}{33}{subsection.2.45}%
-\contentsline {subsection}{\numberline {2.46}ARRAYS}{33}{subsection.2.46}%
-\contentsline {subsection}{\numberline {2.47}UNNEST}{33}{subsection.2.47}%
-\contentsline {subsection}{\numberline {2.48}JSON / JSONB OPERATIONS}{33}{subsection.2.48}%
-\contentsline {subsection}{\numberline {2.49}CTE RECURSIVE}{33}{subsection.2.49}%
-\contentsline {subsection}{\numberline {2.50}WINDOW FUNCTIONS (LEAD)}{33}{subsection.2.50}%
-\contentsline {subsection}{\numberline {2.51}WINDOW FUNCTIONS (LAG)}{33}{subsection.2.51}%
-\contentsline {subsection}{\numberline {2.52}NTILE}{33}{subsection.2.52}%
-\contentsline {subsection}{\numberline {2.53}ROW\_NUMBER}{33}{subsection.2.53}%
-\contentsline {subsection}{\numberline {2.54}RANK}{33}{subsection.2.54}%
-\contentsline {subsection}{\numberline {2.55}DENSE\_RANK}{33}{subsection.2.55}%
-\contentsline {subsection}{\numberline {2.56}PARTITION BY}{33}{subsection.2.56}%
-\contentsline {subsection}{\numberline {2.57}OVER CLAUSE}{33}{subsection.2.57}%
-\contentsline {subsection}{\numberline {2.58}EXPLAIN}{33}{subsection.2.58}%
-\contentsline {subsection}{\numberline {2.59}EXPLAIN ANALYZE}{33}{subsection.2.59}%
-\contentsline {subsection}{\numberline {2.60}VACUUM}{33}{subsection.2.60}%
-\contentsline {subsection}{\numberline {2.61}ANALYZE}{33}{subsection.2.61}%
-\contentsline {subsection}{\numberline {2.62}REINDEX}{33}{subsection.2.62}%
-\contentsline {subsection}{\numberline {2.63}GRANT}{33}{subsection.2.63}%
-\contentsline {subsection}{\numberline {2.64}REVOKE}{33}{subsection.2.64}%
-\contentsline {section}{\numberline {3}General}{35}{section.3}%
-\contentsline {subsection}{\numberline {3.1}General Structure of a SQL Query}{35}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Join Differences}{36}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}NULL Behavior}{36}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}WHERE vs HAVING}{36}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}GROUP BY Rule}{36}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}ORDER BY vs GROUP BY}{36}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}COUNT Differences}{36}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}DISTINCT}{36}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}JOIN Condition}{36}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Cartesian Product}{37}{subsection.3.10}%
-\contentsline {subsection}{\numberline {3.11}Aliases}{37}{subsection.3.11}%
+\contentsline {subsection}{\numberline {2.1}SELECT}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}WHERE}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}ORDER BY}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}DISTINCT}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}LIMIT / OFFSET}{4}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}GROUP BY}{4}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}HAVING}{4}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}INNER JOIN}{5}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}LEFT JOIN}{5}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}RIGHT JOIN}{5}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}FULL OUTER JOIN}{5}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}INSERT}{5}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}UPDATE}{5}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}DELETE}{5}{subsection.2.14}%
+\contentsline {subsection}{\numberline {2.15}CASE WHEN}{6}{subsection.2.15}%
+\contentsline {subsection}{\numberline {2.16}IN}{6}{subsection.2.16}%
+\contentsline {subsection}{\numberline {2.17}BETWEEN}{6}{subsection.2.17}%
+\contentsline {subsection}{\numberline {2.18}LIKE}{6}{subsection.2.18}%
+\contentsline {subsection}{\numberline {2.19}NULL CHECK}{6}{subsection.2.19}%
+\contentsline {subsection}{\numberline {2.20}Aggregate Functions}{6}{subsection.2.20}%
+\contentsline {subsection}{\numberline {2.21}Window Functions}{6}{subsection.2.21}%
+\contentsline {subsection}{\numberline {2.22}WITH (CTE)}{7}{subsection.2.22}%
+\contentsline {subsection}{\numberline {2.23}Subqueries}{8}{subsection.2.23}%
+\contentsline {subsection}{\numberline {2.24}UNION / UNION ALL}{8}{subsection.2.24}%
+\contentsline {subsection}{\numberline {2.25}EXISTS}{8}{subsection.2.25}%
+\contentsline {subsection}{\numberline {2.26}INDEX}{8}{subsection.2.26}%
+\contentsline {subsection}{\numberline {2.27}Transactions}{8}{subsection.2.27}%
+\contentsline {subsection}{\numberline {2.28}ALTER TABLE}{10}{subsection.2.28}%
+\contentsline {subsection}{\numberline {2.29}DROP TABLE}{10}{subsection.2.29}%
+\contentsline {subsection}{\numberline {2.30}TRUNCATE}{10}{subsection.2.30}%
+\contentsline {subsection}{\numberline {2.31}CREATE TABLE}{10}{subsection.2.31}%
+\contentsline {subsection}{\numberline {2.32}CREATE DATABASE}{10}{subsection.2.32}%
+\contentsline {subsection}{\numberline {2.33}CREATE VIEW}{10}{subsection.2.33}%
+\contentsline {subsection}{\numberline {2.34}DROP VIEW}{10}{subsection.2.34}%
+\contentsline {subsection}{\numberline {2.35}INSERT INTO ... ON CONFLICT}{10}{subsection.2.35}%
+\contentsline {subsection}{\numberline {2.36}UPSERT (ON CONFLICT DO UPDATE)}{10}{subsection.2.36}%
+\contentsline {subsection}{\numberline {2.37}MERGE}{10}{subsection.2.37}%
+\contentsline {subsection}{\numberline {2.38}RETURNING}{10}{subsection.2.38}%
+\contentsline {subsection}{\numberline {2.39}COALESCE}{10}{subsection.2.39}%
+\contentsline {subsection}{\numberline {2.40}NULLIF}{10}{subsection.2.40}%
+\contentsline {subsection}{\numberline {2.41}CAST}{10}{subsection.2.41}%
+\contentsline {subsection}{\numberline {2.42}:: type casting}{10}{subsection.2.42}%
+\contentsline {subsection}{\numberline {2.43}STRING FUNCTIONS (CONCAT, SUBSTRING, LENGTH)}{10}{subsection.2.43}%
+\contentsline {subsection}{\numberline {2.44}DATE FUNCTIONS (NOW, CURRENT\_DATE, AGE)}{10}{subsection.2.44}%
+\contentsline {subsection}{\numberline {2.45}INTERVAL}{10}{subsection.2.45}%
+\contentsline {subsection}{\numberline {2.46}ARRAYS}{10}{subsection.2.46}%
+\contentsline {subsection}{\numberline {2.47}UNNEST}{10}{subsection.2.47}%
+\contentsline {subsection}{\numberline {2.48}JSON / JSONB OPERATIONS}{10}{subsection.2.48}%
+\contentsline {subsection}{\numberline {2.49}CTE RECURSIVE}{10}{subsection.2.49}%
+\contentsline {subsection}{\numberline {2.50}WINDOW FUNCTIONS (LEAD)}{10}{subsection.2.50}%
+\contentsline {subsection}{\numberline {2.51}WINDOW FUNCTIONS (LAG)}{10}{subsection.2.51}%
+\contentsline {subsection}{\numberline {2.52}NTILE}{10}{subsection.2.52}%
+\contentsline {subsection}{\numberline {2.53}ROW\_NUMBER}{10}{subsection.2.53}%
+\contentsline {subsection}{\numberline {2.54}RANK}{10}{subsection.2.54}%
+\contentsline {subsection}{\numberline {2.55}DENSE\_RANK}{10}{subsection.2.55}%
+\contentsline {subsection}{\numberline {2.56}PARTITION BY}{10}{subsection.2.56}%
+\contentsline {subsection}{\numberline {2.57}OVER CLAUSE}{10}{subsection.2.57}%
+\contentsline {subsection}{\numberline {2.58}EXPLAIN}{10}{subsection.2.58}%
+\contentsline {subsection}{\numberline {2.59}EXPLAIN ANALYZE}{10}{subsection.2.59}%
+\contentsline {subsection}{\numberline {2.60}VACUUM}{10}{subsection.2.60}%
+\contentsline {subsection}{\numberline {2.61}ANALYZE}{10}{subsection.2.61}%
+\contentsline {subsection}{\numberline {2.62}REINDEX}{10}{subsection.2.62}%
+\contentsline {subsection}{\numberline {2.63}GRANT}{10}{subsection.2.63}%
+\contentsline {subsection}{\numberline {2.64}REVOKE}{10}{subsection.2.64}%
+\contentsline {section}{\numberline {3}General}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}General Structure of a SQL Query}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Join Differences}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}NULL Behavior}{13}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}WHERE vs HAVING}{13}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}GROUP BY Rule}{13}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}ORDER BY vs GROUP BY}{13}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}COUNT Differences}{13}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}DISTINCT}{13}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}JOIN Condition}{13}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Cartesian Product}{14}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Aliases}{14}{subsection.3.11}%
