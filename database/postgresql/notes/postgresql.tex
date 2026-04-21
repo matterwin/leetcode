@@ -1,0 +1,1647 @@
+\documentclass[10pt]{article}
+\usepackage{arydshln}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage{natbib}
+\usepackage{url}
+
+% Citing how to
+% \nocite{*}
+% \bibliographystyle{plain}
+% \bibliography{refs}
+% \cite{ref of cite}
+
+% ---- Macros ----
+\newcommand{\myhrule}[1]{%
+  \vspace{#1}%
+  \noindent\hrule
+  \vspace{#1}%
+}
+\makeatletter
+\newcommand{\bern}{%
+  \begin{enumerate}%
+  \renewcommand{\labelenumi}{\roman{enumi}.}%
+}
+\newcommand{\eern}{%
+  \end{enumerate}%
+}
+\makeatother
+\newcommand{\FlaThreeByThreeTL}[9]{%
+\left(
+\begin{array}{cc|c}
+#1 & #2 & #3\\
+#4 & #5 & #6\\
+\hline
+#7 & #8 & #9
+\end{array}
+\right)%
+}
+\tcbuselibrary{breakable}
+\newcommand{\boxedtext}[1]{%
+\begin{tcolorbox}[
+    colback=white,
+    colframe=black,
+    sharp corners,
+    boxrule=0.5pt,
+    breakable
+]%
+#1
+\end{tcolorbox}%
+}
+\newcommand{\bt}[1]{%
+\begin{tcolorbox}[
+    colback=white,
+    colframe=black,
+    sharp corners,
+    boxrule=0.5pt,
+    breakable
+]%
+#1
+\end{tcolorbox}%
+}
+\newcommand{\FlaTwoByOne}[2]{%
+\left(
+\begin{array}{c}
+#1\\
+\hline
+#2
+\end{array}
+\right)%
+}
+\newcommand{\FlaThreeByOneB}[3]{%
+\left(
+\begin{array}{c}
+#1\\
+\hline
+#2\\
+#3
+\end{array}
+\right)%
+}
+\newcommand{\FlaTwoByTwoSingleLine}[4]{%
+\left(
+\begin{array}{cc}
+#1 & #2\\
+#3 & #4
+\end{array}
+\right)%
+}
+\newcommand{\complexpm}{\boxed{\pm}}
+\newcommand{\FlaOneByTwoSingleLine}[2]{%
+\left(
+\begin{array}{cc}
+    #1 & #2
+\end{array}
+\right)%
+}
+\newcommand{\FlaTwoByOneSingleLine}[2]{%
+\left(
+\begin{array}{cc}
+#1\\
+#2
+\end{array}
+\right)%
+}
+\newcommand{\FlaThreeByThreeBR}[9]{%
+\left(
+\begin{array}{c|cc}
+#1 & #2 & #3 \\ \hline
+#4 & #5 & #6 \\
+#7 & #8 & #9
+\end{array}
+\right)%
+}
+\newcommand{\FlaTwoByTwo}[4]{%
+\left(
+\begin{array}{c|c}
+#1 & #2 \\
+\hline
+#3 & #4
+\end{array}
+\right)
+}
+\newcommand{\FlaOneByThreeR}[3]{%
+\left(
+\begin{array}{c|cc}
+#1 & #2 & #3
+\end{array}
+\right)%
+}
+\newcommand{\FlaOneByTwo}[2]{%
+\left(
+\begin{array}{c|c}
+#1 & #2
+\end{array}
+\right)%
+}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\pbreak}{\vspace{30pt}}
+\newcommand{\ud}[1]{\underline{#1}}
+\newcommand{\ital}[1]{\textit{#1}}
+\newcommand{\fb}[1]{\fbox{#1}}
+\newcommand{\vocab}[1]{\fbox{\textbf{\textit{#1}}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mb}{\mathbf}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}
+\newcommand{\h}[1]{\textbf{\fbox{#1}}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Null}{\mathcal{N}}
+\newcommand{\amp}{&}
+\newcommand{\tpose}{^{\top}}
+\newcommand{\ident}[1][]{\mathbf{I}_{#1}}
+\newcommand{\defeq}{\overset{\cdot}{=}}
+\newcommand{\sbsi}[4]{%
+	\begin{center}
+   		\begin{minipage}{0.5\textwidth}
+      			\centering
+      			\includegraphics[width=#2\textwidth]{#1}
+    		\end{minipage}%
+    		\begin{minipage}{0.5\textwidth}
+      			\centering
+      			\includegraphics[width=#4\textwidth]{#3}
+		\end{minipage}
+ 	\end{center}
+}
+\newcommand{\ci}[2]{%
+  \begin{center}
+	\includegraphics[width=#2\textwidth]{#1}
+  \end{center}
+}
+\newcommand{\cii}[4]{%
+  \begin{center}
+    \includegraphics[width=#2\textwidth]{#1}\hfill
+    \includegraphics[width=#4\textwidth]{#3}
+  \end{center}
+}
+\newcommand{\newbp}{%
+  \newpage
+  \mbox{}
+  \newpage
+}
+\newcommand{\formbox}[1]{%
+  \begin{center}
+    \fbox{\parbox{0.95\linewidth}{\[
+      #1
+    \]}}
+  \end{center}
+}
+\newcommand{\euler}{\mathrm{e}}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\al}[1]{\ensuremath{\begin{aligned}#1\end{aligned}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\rightarrowname}[1]{\ensuremath{\xrightarrow{\text{#1}}}}
+\newcommand{\leftarrowname}[1]{\ensuremath{\xleftarrow{\text{#1}}}}
+\newcommand{\lt}{<}
+\newcommand{\gt}{>}
+\setlength{\parindent}{0pt}
+\newcommand{\tab}{\hspace*{2em}}
+\newcommand{\pause}{}
+% ------------------------------
+\DeclareMathSizes{10}{13}{8}{8}
+
+% optionally:
+% \setcounter{secnumdepth}{0} % removes section numbers
+\renewcommand{\arraystretch}{1.5}
+% \DeclareMathSizes{<text size>}{<math size>}{<script size>}{<scriptscript size>}
+
+\title{PostgreSQL notes}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newbp
+\section{General}
+
+\subsection{Terminology}
+
+\begin{itemize}
+\item \textbf{Table}: A structured collection of data organized into rows and columns. In PostgreSQL, a table represents an entity (e.g., users, orders).
+
+\item \textbf{Row (Tuple)}: A single record in a table. Each row represents one instance of the entity.
+
+\item \textbf{Column (Attribute)}: A named field in a table that represents a specific property of the entity (e.g., age, email). All values in a column share the same data type.
+
+\item \textbf{Schema}: A logical namespace that organizes database objects such as tables, views, and indexes. Helps avoid naming conflicts.
+
+\item \textbf{Database}: A collection of schemas and their objects. It is the top-level container in PostgreSQL.
+
+\item \textbf{Primary Key}: A column (or set of columns) that uniquely identifies each row in a table. Values must be unique and not NULL.
+
+\item \textbf{Foreign Key}: A column (or set of columns) that references a primary key in another table, establishing relationships between tables.
+
+\item \textbf{Constraint}: A rule enforced on a column or table (e.g., NOT NULL, UNIQUE, CHECK) to ensure data integrity.
+
+\item \textbf{Index}: A data structure that improves the speed of data retrieval operations, often at the cost of additional storage and slower writes.
+
+\item \textbf{View}: A virtual table defined by a query. It does not store data itself but presents data from one or more tables.
+
+\item \textbf{Query}: A request for data or information from the database, typically written in SQL.
+
+\item \textbf{NULL}: A special marker representing missing or unknown data (not the same as zero or an empty string).
+
+\item \textbf{Transaction}: A sequence of operations performed as a single unit of work. Transactions follow ACID properties (Atomicity, Consistency, Isolation, Durability).
+
+\item \textbf{Relation}: A formal term for a table in relational databases, based on relational algebra.
+
+\item \textbf{Cardinality}: The number of rows in a table, or the nature of relationships between tables (e.g., one-to-many).
+
+\end{itemize}
+
+\newpage
+
+\subsection{General Structure of a SQL Query}
+\begin{itemize}
+\item A SQL query follows a logical execution order, which is different from how it is written.
+\end{itemize}
+
+\begin{verbatim}
+SELECT columns
+FROM table
+JOIN other_table
+ON join_condition
+WHERE row_filter
+GROUP BY grouping_columns
+HAVING group_filter
+ORDER BY sorting_columns
+LIMIT number_of_rows;
+\end{verbatim}
+
+\begin{itemize}
+\item Logical execution order:
+    \begin{itemize}
+    \item FROM (choose tables)
+    \item JOIN (combine tables)
+    \item WHERE (filter rows)
+    \item GROUP BY (group rows)
+    \item HAVING (filter groups)
+    \item SELECT (choose columns / expressions)
+    \item ORDER BY (sort results)
+    \item LIMIT (restrict output)
+    \end{itemize}
+\item Important: The written order is NOT the execution order.
+\end{itemize}
+
+\newpage 
+
+\subsection{Query Execution Order}
+
+Although SQL queries are written in a top-down manner, they are logically evaluated in a different order. Understanding this order is important for reasoning about query behavior, especially with filtering and aggregation.
+
+\begin{enumerate}
+\item \textbf{FROM}: Determine the source tables and perform joins to construct the initial working set of rows.
+
+\item \textbf{WHERE}: Filter rows based on conditions. This happens before any grouping or aggregation.
+
+\item \textbf{GROUP BY}: Group the remaining rows into sets based on specified columns.
+
+\item \textbf{HAVING}: Filter groups after aggregation (similar to WHERE, but operates on grouped data).
+
+\item \textbf{SELECT}: Compute and return the desired columns or expressions. Aggregations (e.g., COUNT, SUM) are evaluated here.
+
+\item \textbf{DISTINCT}: Remove duplicate rows from the result set (if specified).
+
+\item \textbf{ORDER BY}: Sort the final result set.
+
+\item \textbf{LIMIT / OFFSET}: Restrict the number of rows returned.
+\end{enumerate}
+
+\paragraph{Example}
+\begin{verbatim}
+SELECT department, COUNT(*)
+FROM employees
+WHERE salary > 50000
+GROUP BY department
+HAVING COUNT(*) > 5
+ORDER BY COUNT(*) DESC
+LIMIT 10;
+\end{verbatim}
+
+\paragraph{Explanation}
+\begin{itemize}
+\item First, rows are gathered from \texttt{employees} (FROM)
+\item Then filtered by salary (WHERE)
+\item Remaining rows are grouped by department (GROUP BY)
+\item Groups with too few rows are removed (HAVING)
+\item Counts are computed and selected (SELECT)
+\item Results are sorted (ORDER BY)
+\item Finally, only the top 10 are returned (LIMIT)
+\end{itemize}
+
+\newpage
+
+\subsection{TRUNCATE vs DROP vs DELETE}
+\begin{itemize}
+    \item Purpose: Different ways to remove data or tables in SQL.
+\end{itemize}
+
+\textbf{DELETE (remove rows selectively or all rows):}
+
+\begin{verbatim}
+DELETE FROM employees;
+
+DELETE FROM employees
+WHERE salary < 50000;
+\end{verbatim}
+
+\begin{itemize}
+    \item Removes rows one by one
+    \item Can use WHERE clause
+    \item Slower for large tables
+    \item Keeps table structure
+\end{itemize}
+
+\textbf{TRUNCATE (remove all rows quickly):}
+
+\begin{verbatim}
+TRUNCATE TABLE employees;
+\end{verbatim}
+
+\begin{itemize}
+    \item Removes all rows at once
+    \item Cannot use WHERE clause
+    \item Faster than DELETE
+    \item Keeps table structure
+\end{itemize}
+
+\textbf{DROP (remove entire table):}
+
+\begin{verbatim}
+DROP TABLE employees;
+\end{verbatim}
+
+\begin{itemize}
+    \item Removes table and all data permanently
+    \item Table no longer exists
+    \item Fast operation
+    \item Must recreate table if needed again
+\end{itemize}
+
+\newpage
+\subsection{JOIN Differences}
+The matches will fill in a NULL value for entries that don't have a match\\ 
+(in the case of like all left or all right).
+\begin{itemize}
+\item JOIN -- implicitly INNER JOIN (only matches)
+\item INNER JOIN -- only matches
+\item LEFT JOIN / LEFT OUTER JOIN -- all left + matches
+\item RIGHT JOIN / RIGHT OUTER JOIN -- all right + matches
+\item FULL JOIN / FULL OUTER JOIN -- all rows from both sides
+\item CROSS JOIN -- cartesian product (every row on left matches every row on right)
+\item SELF JOIN -- table joined with itself
+\item NATURAL JOIN -- auto-join on columns with same name (can be unsafe)
+\item JOIN USING -- join using a shared column name
+\item LATERAL JOIN -- subquery can reference left table (per-row evaluation)
+\item SEMI JOIN (EXISTS) -- rows from left that have a match (no duplication)
+\item ANTI JOIN (LEFT + NULL) -- rows from left with no match
+\end{itemize}
+
+\subsection{NULL Behavior}
+NULL means "unknown value" and behaves differently from normal values.
+\begin{itemize}
+\item Use IS NULL / IS NOT NULL (NOT =)
+\item NULL in comparisons results in UNKNOWN (not true/false)
+\item Aggregates ignore NULL values (except COUNT(*))
+\end{itemize}
+
+\subsection{WHERE vs HAVING}
+\begin{itemize}
+\item WHERE filters rows BEFORE grouping
+\item HAVING filters AFTER GROUP BY
+\end{itemize}
+
+\subsection{GROUP BY Rule}
+\begin{itemize}
+\item Every selected column must be either:
+    \begin{itemize}
+    \item in GROUP BY
+    \item or an aggregate function (COUNT, MAX, etc.)
+    \end{itemize}
+\end{itemize}
+
+\subsection{ORDER BY vs GROUP BY}
+\begin{itemize}
+\item GROUP BY = aggregates rows
+\item ORDER BY = sorts final result
+\end{itemize}
+
+\subsection{COUNT Differences}
+\begin{itemize}
+\item COUNT(*) counts all rows
+\item COUNT(column) ignores NULL values
+\end{itemize}
+
+\subsection{DISTINCT}
+\begin{itemize}
+\item Removes duplicate rows from result
+\item Works on entire selected row combination
+\end{itemize}
+
+\subsection{JOIN Condition}
+\begin{itemize}
+\item ON clause defines how tables match
+\item Missing or wrong ON can cause Cartesian product (explosion of rows)
+\end{itemize}
+
+\subsection{Cartesian Product}
+\begin{itemize}
+\item Occurs when JOIN has no condition
+\item Every row combines with every other row
+\item Avoid unless intentionally using CROSS JOIN
+\end{itemize}
+
+\subsection{Aliases}
+\begin{itemize}
+\item Temporary names for tables or columns
+\item Improves readability and reduces repetition
+\end{itemize}
+
+\textbf{Table alias:}
+
+\begin{verbatim}
+SELECT c.id, c.name
+FROM customers c;
+\end{verbatim}
+
+\textbf{Table aliases with JOIN:}
+
+\begin{verbatim}
+SELECT c.name, o.order_id
+FROM customers c
+JOIN orders o ON c.id = o.customer_id;
+\end{verbatim}
+
+\textbf{Column alias:}
+
+\begin{verbatim}
+SELECT salary AS monthly_salary
+FROM employees;
+\end{verbatim}
+
+\subsection{FROM Table vs Derived Table (Subquery / CTE)}
+\begin{itemize}
+    \item Purpose: Compare querying a base table directly vs using a temporary derived result.
+\end{itemize}
+
+\textbf{Direct table access:}
+
+\begin{verbatim}
+SELECT *
+FROM employees;
+\end{verbatim}
+
+\textbf{Derived table (subquery in FROM clause):}
+
+\begin{verbatim}
+SELECT *
+FROM (
+    SELECT id, salary
+    FROM employees
+    WHERE salary > 50000
+) AS high_paid;
+\end{verbatim}
+
+\textbf{CTE equivalent (cleaner version):}
+
+\begin{verbatim}
+WITH high_paid AS (
+    SELECT id, salary
+    FROM employees
+    WHERE salary > 50000
+)
+SELECT *
+FROM high_paid;
+\end{verbatim}
+
+\subsection{EXISTS and \texttt{SELECT 1}}
+
+In SQL, when using \texttt{EXISTS} or \texttt{NOT EXISTS}, the actual value in the \texttt{SELECT} clause does not matter. The query only checks whether at least one row exists.
+
+Thus, the following are all equivalent:
+
+\begin{verbatim}
+SELECT 1
+SELECT NULL
+SELECT *
+SELECT column_name
+\end{verbatim}
+
+They all produce the same result because \texttt{EXISTS} ignores the selected values and only evaluates the presence of rows. For this reason, \texttt{SELECT 1} is commonly used for clarity and convention.
+
+\newbp
+\section{PostgreSQL Commands (Comprehensive Cheat Sheet)}
+
+% ================= SELECT =================
+\subsection{SELECT}
+\begin{itemize}
+    \item Purpose: Retrieve data from one or more tables.
+\end{itemize}
+
+\begin{verbatim}
+SELECT * FROM employees;
+
+SELECT name, salary
+FROM employees
+WHERE salary > 50000;
+\end{verbatim}
+
+% ================= WHERE =================
+\subsection{WHERE}
+\begin{itemize}
+    \item Purpose: Filter rows based on conditions.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE department = 'Engineering'
+  AND salary > 70000;
+\end{verbatim}
+
+% ================= ORDER BY =================
+\subsection{ORDER BY}
+\begin{itemize}
+    \item Purpose: Sort results ascending or descending.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+ORDER BY salary DESC;
+\end{verbatim}
+
+% ================= DISTINCT =================
+\subsection{DISTINCT}
+\begin{itemize}
+    \item Purpose: Remove duplicates.
+\end{itemize}
+
+\begin{verbatim}
+SELECT DISTINCT department
+FROM employees;
+\end{verbatim}
+
+% ================= LIMIT / OFFSET =================
+\subsection{LIMIT / OFFSET}
+\begin{itemize}
+    \item Purpose: Restrict number of rows and paginate results.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+LIMIT 10 OFFSET 20;
+\end{verbatim}
+
+% ================= GROUP BY =================
+\subsection{GROUP BY}
+\begin{itemize}
+    \item Purpose: Aggregate rows into groups.
+\end{itemize}
+
+\begin{verbatim}
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department;
+\end{verbatim}
+
+% ================= HAVING =================
+\subsection{HAVING}
+\begin{itemize}
+    \item Purpose: Filter aggregated groups.
+\end{itemize}
+
+\begin{verbatim}
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 5;
+\end{verbatim}
+
+% ================= JOINS =================
+\subsection{JOIN}
+Implicitly an INNER JOIN
+
+\subsection{INNER JOIN}
+\begin{itemize}
+    \item Purpose: Only matching rows between tables.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+INNER JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\subsection{LEFT JOIN / LEFT OUTER JOIN}
+\begin{itemize}
+    \item Purpose: All left table rows + matches from right.
+    \item Note: LEFT JOIN and LEFT OUTER JOIN are identical.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+LEFT OUTER JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\subsection{RIGHT JOIN / RIGHT OUTER JOIN}
+\begin{itemize}
+    \item Purpose: All right table rows + matches from left.
+    \item Note: RIGHT JOIN and RIGHT OUTER JOIN are identical.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+RIGHT OUTER JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\subsection{FULL OUTER JOIN}
+\begin{itemize}
+    \item Purpose: All rows from both tables (matched where possible, NULL otherwise).
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, d.name
+FROM employees e
+FULL OUTER JOIN departments d
+ON e.department_id = d.id;
+\end{verbatim}
+
+\subsection{CROSS JOIN}
+\begin{itemize}
+    \item Purpose: Cartesian product (all combinations of rows).
+    \item No ON clause is used.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, s.subject
+FROM employees e
+CROSS JOIN subjects s;
+\end{verbatim}
+
+\subsection{SELF JOIN}
+\begin{itemize}
+    \item Purpose: Join a table with itself.
+    \item Commonly used for hierarchical data (e.g., employee-manager).
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name AS employee, m.name AS manager
+FROM employees e
+LEFT JOIN employees m
+ON e.manager_id = m.id;
+\end{verbatim}
+
+\subsection{NATURAL JOIN}
+\begin{itemize}
+    \item Purpose: Automatically joins columns with the same name.
+    \item Warning: Can be error-prone if schemas change.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+NATURAL JOIN departments;
+\end{verbatim}
+
+\subsection{JOIN USING}
+\begin{itemize}
+    \item Purpose: Simplifies joins when both tables share the same column name.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+JOIN departments
+USING (department_id);
+\end{verbatim}
+
+\subsection{LATERAL JOIN}
+\begin{itemize}
+    \item Purpose: Allows a subquery to reference columns from the left table.
+    \item Very useful for per-row subqueries.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.name, sub.*
+FROM employees e
+LEFT JOIN LATERAL (
+    SELECT *
+    FROM projects p
+    WHERE p.employee_id = e.id
+    LIMIT 1
+) sub ON true;
+\end{verbatim}
+
+\subsection{ANTI JOIN (pattern)}
+\begin{itemize}
+    \item Purpose: Find rows in one table with no match in another.
+    \item Implemented using LEFT JOIN + WHERE NULL.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.*
+FROM employees e
+LEFT JOIN departments d
+ON e.department_id = d.id
+WHERE d.id IS NULL;
+\end{verbatim}
+
+\subsection{SEMI JOIN (pattern)}
+\begin{itemize}
+    \item Purpose: Return rows that have a match (without duplicating).
+    \item Typically written using EXISTS.
+\end{itemize}
+
+\begin{verbatim}
+SELECT e.*
+FROM employees e
+WHERE EXISTS (
+    SELECT 1
+    FROM departments d
+    WHERE e.department_id = d.id
+);
+\end{verbatim}
+
+% ================= INSERT =================
+\subsection{INSERT}
+\begin{itemize}
+    \item Purpose: Insert new rows.
+\end{itemize}
+
+\begin{verbatim}
+INSERT INTO employees (name, salary)
+VALUES ('Alice', 90000);
+\end{verbatim}
+
+% ================= UPDATE =================
+\subsection{UPDATE}
+\begin{itemize}
+    \item Purpose: Modify existing rows.
+\end{itemize}
+
+\begin{verbatim}
+UPDATE employees
+SET salary = salary * 1.1
+WHERE department = 'Engineering';
+\end{verbatim}
+
+% ================= DELETE =================
+\subsection{DELETE}
+\begin{itemize}
+    \item Purpose: Remove rows.
+\end{itemize}
+
+\begin{verbatim}
+DELETE FROM employees
+WHERE id = 10;
+\end{verbatim}
+
+% ================= CASE =================
+\subsection{CASE WHEN}
+\begin{itemize}
+    \item Purpose: Conditional logic in queries.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name,
+       CASE
+           WHEN salary > 100000 THEN 'High'
+           WHEN salary > 50000 THEN 'Medium'
+           ELSE 'Low'
+       END AS salary_level
+FROM employees;
+\end{verbatim}
+
+% ================= IN =================
+\subsection{IN}
+\begin{itemize}
+    \item Purpose: Match against multiple values.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE department IN ('Engineering', 'HR');
+\end{verbatim}
+
+% ================= BETWEEN =================
+\subsection{BETWEEN}
+\begin{itemize}
+    \item Purpose: Range filtering.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE salary BETWEEN 50000 AND 100000;
+\end{verbatim}
+
+% ================= LIKE =================
+\subsection{LIKE}
+\begin{itemize}
+    \item Purpose: Pattern matching.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE name LIKE 'A%';
+\end{verbatim}
+
+% ================= NULL CHECK =================
+\subsection{NULL CHECK}
+\begin{itemize}
+    \item Purpose: Check missing values.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM employees
+WHERE manager_id IS NULL;
+\end{verbatim}
+
+% ================= AGGREGATES =================
+\subsection{\textbf{Aggregate Functions}}
+\begin{itemize}
+    \item Purpose: Compute summary statistics.
+\end{itemize}
+
+\begin{verbatim}
+SELECT
+    COUNT(*),
+    SUM(salary),
+    AVG(salary),
+    MAX(salary),
+    MIN(salary)
+FROM employees;
+\end{verbatim}
+
+% ================= WINDOW FUNCTIONS =================
+\subsection{Window Functions}
+\begin{itemize}
+    \item Purpose: Compute values across partitions without collapsing rows.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name,
+       salary,
+       RANK() OVER (PARTITION BY department ORDER BY salary DESC)
+FROM employees;
+\end{verbatim}
+
+% ================= CTE =================
+\subsection{WITH (CTE)}
+\begin{itemize}
+    \item Purpose: Create temporary named result sets.
+\end{itemize}
+
+\begin{verbatim}
+WITH high_salary AS (
+    SELECT *
+    FROM employees
+    WHERE salary > 100000
+)
+SELECT * FROM high_salary;
+\end{verbatim}
+
+% ================= SUBQUERY =================
+\newpage
+\subsection{\textbf{Subqueries}}
+\begin{itemize}
+    \item Purpose: Nest queries inside another query.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+\end{verbatim}
+
+% ================= UNION =================
+\subsection{UNION / UNION ALL}
+\begin{itemize}
+    \item Purpose: Combine results of multiple queries.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name FROM employees
+UNION
+SELECT name FROM contractors;
+\end{verbatim}
+
+% ================= EXISTS =================
+\subsection{EXISTS}
+\begin{itemize}
+    \item Purpose: Check existence of rows in subquery.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name
+FROM employees e
+WHERE EXISTS (
+    SELECT 1
+    FROM departments d
+    WHERE d.id = e.department_id
+);
+\end{verbatim}
+
+% ================= INDEX =================
+\subsection{INDEX}
+\begin{itemize}
+    \item Purpose: Speed up queries.
+\end{itemize}
+
+\begin{verbatim}
+CREATE INDEX idx_salary
+ON employees(salary);
+\end{verbatim}
+
+% ================= TRANSACTIONS =================
+\subsection{\textbf{Transactions}}
+\begin{itemize}
+    \item Purpose: Ensure atomic operations.
+\end{itemize}
+
+\begin{verbatim}
+BEGIN;
+
+UPDATE employees SET salary = salary * 1.1;
+
+COMMIT;
+\end{verbatim}
+
+\newpage 
+% ================= ALTER TABLE =================
+\subsection{ALTER TABLE}
+\begin{itemize}
+    \item Purpose: Modify an existing table (add/remove columns, change types).
+\end{itemize}
+
+\begin{verbatim}
+ALTER TABLE employees
+ADD COLUMN age INT;
+
+ALTER TABLE employees
+DROP COLUMN age;
+\end{verbatim}
+
+% ================= DROP TABLE =================
+\subsection{DROP TABLE}
+\begin{itemize}
+    \item Purpose: Permanently delete a table and all its data.
+\end{itemize}
+
+\begin{verbatim}
+DROP TABLE employees;
+\end{verbatim}
+
+% ================= TRUNCATE =================
+\subsection{TRUNCATE}
+\begin{itemize}
+    \item Purpose: Remove all rows from a table quickly (keeps structure).
+\end{itemize}
+
+\begin{verbatim}
+TRUNCATE TABLE employees;
+\end{verbatim}
+
+% ================= CREATE TABLE =================
+\subsection{CREATE TABLE}
+\begin{itemize}
+    \item Purpose: Create a new table with defined columns.
+\end{itemize}
+
+\begin{verbatim}
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    salary INT
+);
+\end{verbatim}
+
+% ================= CREATE DATABASE =================
+\subsection{CREATE DATABASE}
+\begin{itemize}
+    \item Purpose: Create a new database.
+\end{itemize}
+
+\begin{verbatim}
+CREATE DATABASE company_db;
+\end{verbatim}
+
+% ================= CREATE VIEW =================
+\subsection{CREATE VIEW}
+\begin{itemize}
+    \item Purpose: Create a virtual table based on a query.
+\end{itemize}
+
+\begin{verbatim}
+CREATE VIEW high_salary AS
+SELECT name, salary
+FROM employees
+WHERE salary > 100000;
+\end{verbatim}
+
+% ================= DROP VIEW =================
+\subsection{DROP VIEW}
+\begin{itemize}
+    \item Purpose: Remove a view.
+\end{itemize}
+
+\begin{verbatim}
+DROP VIEW high_salary;
+\end{verbatim}
+
+% ================= INSERT ... ON CONFLICT =================
+\subsection{INSERT INTO ... ON CONFLICT}
+\begin{itemize}
+    \item Purpose: Handle duplicate key errors during insert.
+\end{itemize}
+
+\begin{verbatim}
+INSERT INTO users (id, name)
+VALUES (1, 'Alice')
+ON CONFLICT (id) DO NOTHING;
+\end{verbatim}
+
+% ================= UPSERT =================
+\subsection{UPSERT (ON CONFLICT DO UPDATE)}
+\begin{itemize}
+    \item Purpose: Insert a row or update it if a conflict occurs.
+\end{itemize}
+
+\begin{verbatim}
+INSERT INTO users (id, name)
+VALUES (1, 'Alice')
+ON CONFLICT (id)
+DO UPDATE SET name = EXCLUDED.name;
+\end{verbatim}
+
+% ================= MERGE =================
+\subsection{MERGE}
+\begin{itemize}
+    \item Purpose: Conditionally insert, update, or delete based on matches.
+\end{itemize}
+
+\begin{verbatim}
+MERGE INTO employees e
+USING new_data n
+ON e.id = n.id
+WHEN MATCHED THEN
+    UPDATE SET salary = n.salary
+WHEN NOT MATCHED THEN
+    INSERT (id, salary) VALUES (n.id, n.salary);
+\end{verbatim}
+
+% ================= RETURNING =================
+\subsection{RETURNING}
+\begin{itemize}
+    \item Purpose: Return affected rows after INSERT/UPDATE/DELETE.
+\end{itemize}
+
+\begin{verbatim}
+INSERT INTO users (name)
+VALUES ('Alice')
+RETURNING id;
+\end{verbatim}
+
+% ================= COALESCE =================
+\subsection{COALESCE}
+\begin{itemize}
+    \item Purpose: Return the first non-NULL value.
+\end{itemize}
+
+\begin{verbatim}
+SELECT COALESCE(phone, 'N/A')
+FROM users;
+\end{verbatim}
+
+% ================= NULLIF =================
+\subsection{NULLIF}
+\begin{itemize}
+    \item Purpose: Return NULL if two values are equal.
+\end{itemize}
+
+\begin{verbatim}
+SELECT NULLIF(score, 0)
+FROM results;
+\end{verbatim}
+
+% ================= CAST =================
+\subsection{CAST}
+\begin{itemize}
+    \item Purpose: Convert a value from one data type to another.
+\end{itemize}
+
+\begin{verbatim}
+SELECT CAST(salary AS TEXT)
+FROM employees;
+
+-- or shorthand
+SELECT salary::TEXT
+FROM employees;
+\end{verbatim}
+
+% ================= :: TYPE CASTING =================
+\subsection{:: type casting}
+\begin{itemize}
+    \item Purpose: Shorthand syntax for casting between data types (PostgreSQL).
+\end{itemize}
+
+\begin{verbatim}
+SELECT '123'::INT;
+
+SELECT salary::TEXT
+FROM employees;
+\end{verbatim}
+
+% ================= STRING FUNCTIONS =================
+\subsection{STRING FUNCTIONS (CONCAT, SUBSTRING, LENGTH)}
+\begin{itemize}
+    \item Purpose: Manipulate and analyze text data.
+\end{itemize}
+
+\begin{verbatim}
+SELECT CONCAT(first_name, ' ', last_name)
+FROM employees;
+
+SELECT SUBSTRING(name FROM 1 FOR 3)
+FROM employees;
+
+SELECT LENGTH(name)
+FROM employees;
+\end{verbatim}
+
+% ================= DATE FUNCTIONS =================
+\subsection{DATE FUNCTIONS (NOW, CURRENT\_DATE, AGE)}
+\begin{itemize}
+    \item Purpose: Work with dates and time values.
+\end{itemize}
+
+\begin{verbatim}
+SELECT NOW();
+
+SELECT CURRENT_DATE;
+
+SELECT AGE(NOW(), birth_date)
+FROM users;
+\end{verbatim}
+
+% ================= INTERVAL =================
+\subsection{INTERVAL}
+\begin{itemize}
+    \item Purpose: Represent and manipulate durations of time.
+\end{itemize}
+
+\begin{verbatim}
+SELECT NOW() + INTERVAL '1 day';
+
+SELECT NOW() - INTERVAL '2 hours';
+
+SELECT CURRENT_DATE + INTERVAL '7 days';
+\end{verbatim}
+
+% ================= ARRAYS =================
+\subsection{ARRAYS}
+\begin{itemize}
+    \item Purpose: Store and query lists of values in a single column.
+\end{itemize}
+
+\begin{verbatim}
+CREATE TABLE students (
+    id SERIAL,
+    grades INT[]
+);
+
+INSERT INTO students (grades)
+VALUES (ARRAY[90, 85, 88]);
+
+SELECT grades[1]
+FROM students;
+\end{verbatim}
+
+% ================= UNNEST =================
+\subsection{UNNEST}
+\begin{itemize}
+    \item Purpose: Expand an array into a set of rows.
+\end{itemize}
+
+\begin{verbatim}
+SELECT UNNEST(ARRAY[1,2,3,4]);
+
+SELECT id, UNNEST(grades)
+FROM students;
+\end{verbatim}
+
+% ================= JSON / JSONB =================
+\subsection{JSON / JSONB OPERATIONS}
+\begin{itemize}
+    \item Purpose: Store and query structured JSON data.
+\end{itemize}
+
+\begin{verbatim}
+SELECT data->'name'
+FROM users;
+
+SELECT data->>'name'
+FROM users;
+
+SELECT data->>'age'
+FROM users
+WHERE data->>'city' = 'Houston';
+\end{verbatim}
+
+% ================= CTE RECURSIVE =================
+\subsection{CTE RECURSIVE}
+\begin{itemize}
+    \item Purpose: Perform recursive queries (e.g., hierarchies, trees).
+\end{itemize}
+
+\begin{verbatim}
+WITH RECURSIVE nums AS (
+    SELECT 1 AS n
+    UNION ALL
+    SELECT n + 1 FROM nums WHERE n < 5
+)
+SELECT * FROM nums;
+\end{verbatim}
+
+% ================= WINDOW FUNCTION (LEAD) =================
+\subsection{WINDOW FUNCTIONS (LEAD)}
+\begin{itemize}
+    \item Purpose: Access the next row's value without grouping.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       LEAD(salary) OVER (ORDER BY salary) AS next_salary
+FROM employees;
+\end{verbatim}
+
+% ================= WINDOW FUNCTION (LAG) =================
+\subsection{WINDOW FUNCTIONS (LAG)}
+\begin{itemize}
+    \item Purpose: Access the previous row's value without grouping.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       LAG(salary) OVER (ORDER BY salary) AS prev_salary
+FROM employees;
+\end{verbatim}
+
+% ================= NTILE =================
+\subsection{NTILE}
+\begin{itemize}
+    \item Purpose: Divide rows into equal-sized buckets.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       NTILE(4) OVER (ORDER BY salary) AS quartile
+FROM employees;
+\end{verbatim}
+
+% ================= ROW_NUMBER =================
+\subsection{ROW\_NUMBER}
+\begin{itemize}
+    \item Purpose: Assign a unique sequential number to each row.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_num
+FROM employees;
+\end{verbatim}
+
+% ================= RANK =================
+\subsection{RANK}
+\begin{itemize}
+    \item Purpose: Rank rows with gaps for ties.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       RANK() OVER (ORDER BY salary DESC) AS rank
+FROM employees;
+\end{verbatim}
+
+% ================= DENSE_RANK =================
+\subsection{DENSE\_RANK}
+\begin{itemize}
+    \item Purpose: Rank rows without gaps for ties.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       DENSE_RANK() OVER (ORDER BY salary DESC) AS dense_rank
+FROM employees;
+\end{verbatim}
+
+% ================= PARTITION BY =================
+\subsection{PARTITION BY}
+\begin{itemize}
+    \item Purpose: Divide rows into groups for window functions.
+\end{itemize}
+
+\begin{verbatim}
+SELECT department, name, salary,
+       ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC)
+FROM employees;
+\end{verbatim}
+
+% ================= OVER CLAUSE =================
+\subsection{OVER CLAUSE}
+\begin{itemize}
+    \item Purpose: Define the window for window functions.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name, salary,
+       SUM(salary) OVER () AS total_salary,
+       AVG(salary) OVER (PARTITION BY department) AS avg_dept_salary
+FROM employees;
+\end{verbatim}
+
+% ================= EXPLAIN =================
+\subsection{EXPLAIN}
+\begin{itemize}
+    \item Purpose: Show the query execution plan without running it.
+\end{itemize}
+
+\begin{verbatim}
+EXPLAIN
+SELECT * FROM employees
+WHERE salary > 50000;
+\end{verbatim}
+
+% ================= EXPLAIN ANALYZE =================
+\subsection{EXPLAIN ANALYZE}
+\begin{itemize}
+    \item Purpose: Execute the query and show the actual execution plan with timing.
+\end{itemize}
+
+\begin{verbatim}
+EXPLAIN ANALYZE
+SELECT * FROM employees
+WHERE salary > 50000;
+\end{verbatim}
+
+% ================= VACUUM =================
+\subsection{VACUUM}
+\begin{itemize}
+    \item Purpose: Reclaim storage and clean up dead tuples.
+\end{itemize}
+
+\begin{verbatim}
+VACUUM employees;
+\end{verbatim}
+
+% ================= ANALYZE =================
+\subsection{ANALYZE}
+\begin{itemize}
+    \item Purpose: Update table statistics for the query planner.
+\end{itemize}
+
+\begin{verbatim}
+ANALYZE employees;
+\end{verbatim}
+
+% ================= REINDEX =================
+\subsection{REINDEX}
+\begin{itemize}
+    \item Purpose: Rebuild indexes to improve performance or fix corruption.
+\end{itemize}
+
+\begin{verbatim}
+REINDEX TABLE employees;
+
+REINDEX INDEX idx_salary;
+\end{verbatim}
+
+% ================= GRANT =================
+\subsection{GRANT}
+\begin{itemize}
+    \item Purpose: Give permissions to users or roles.
+\end{itemize}
+
+\begin{verbatim}
+GRANT SELECT, INSERT ON employees TO user1;
+
+GRANT ALL PRIVILEGES ON TABLE employees TO admin_role;
+\end{verbatim}
+
+% ================= REVOKE =================
+\subsection{REVOKE}
+\begin{itemize}
+    \item Purpose: Remove permissions from users or roles.
+\end{itemize}
+
+\begin{verbatim}
+REVOKE SELECT ON employees FROM user1;
+
+REVOKE ALL PRIVILEGES ON TABLE employees FROM admin_role;
+\end{verbatim}
+
+% ================= IFNULL =================
+\subsection{IFNULL}
+\begin{itemize}
+    \item Purpose: Returns a replacement value when an expression is \texttt{NULL}.
+    \item Use Case: Common in SQL (especially MySQL) to handle missing or undefined values in query results.
+    \item Note: In PostgreSQL, \texttt{COALESCE()} is used instead of \texttt{IFNULL()}.
+\end{itemize}
+
+\begin{verbatim}
+-- MySQL example
+SELECT IFNULL(score, 0) AS score
+FROM players;
+
+-- Equivalent PostgreSQL version
+SELECT COALESCE(score, 0) AS score
+FROM players;
+\end{verbatim}
+
+% ================= UPPER =================
+\subsection{UPPER}
+\begin{itemize}
+    \item Purpose: Converts all characters in a string to uppercase.
+    \item Use Case: Commonly used to make string comparisons or sorting case-insensitive.
+\end{itemize}
+
+\begin{verbatim}
+SELECT UPPER(name)
+FROM users
+ORDER BY UPPER(name);
+\end{verbatim}
+
+% ================= LOWER =================
+\subsection{LOWER}
+\begin{itemize}
+    \item Purpose: Converts all characters in a string to lowercase.
+    \item Use Case: Used for case-insensitive comparisons, filtering, and sorting.
+\end{itemize}
+
+\begin{verbatim}
+SELECT LOWER(name)
+FROM users
+ORDER BY LOWER(name);
+\end{verbatim}
+
+% ================= COLLATE "C" =================
+\subsection{COLLATE "C"}
+\begin{itemize}
+    \item Purpose: Forces byte-level string comparison instead of locale-aware sorting.
+	\item Use Case: Ensures deterministic and system-independent \textbf{lexicographic ordering}.
+\end{itemize}
+
+\begin{verbatim}
+SELECT name
+FROM users
+ORDER BY name COLLATE "C";
+\end{verbatim}
+
+\begin{itemize}
+    \item ``C'' $\rightarrow$ byte-order sorting (fast, deterministic), also described as raw machine-level sorting.
+    \item ``POSIX'' $\rightarrow$ essentially equivalent to ``C'' on most systems, providing the same deterministic ordering behavior.
+    \item ``en\_US.UTF-8'' $\rightarrow$ applies English language locale rules for human-friendly sorting.
+    \item ``fr\_FR.UTF-8'' $\rightarrow$ applies French locale rules, including language-specific character ordering.
+\end{itemize}
+
+% ================= STRING_AGG =================
+\subsection{STRING\_AGG}
+\begin{itemize}
+    \item Concatenates values into a single string with a delimiter
+    \item Syntax:
+\begin{verbatim}
+STRING_AGG(column, 'delimiter')
+\end{verbatim}
+    \item Example:
+\begin{verbatim}
+SELECT STRING_AGG(product, ', ')
+FROM Activities;
+\end{verbatim}
+    \item With DISTINCT and ordering:
+\begin{verbatim}
+SELECT STRING_AGG(DISTINCT product, ',' ORDER BY product)
+FROM Activities;
+\end{verbatim}
+    \item Common use: readable output (e.g., comma-separated lists)
+\end{itemize}
+
+% ================= ARRAY_AGG =================
+\subsection{ARRAY\_AGG}
+\begin{itemize}
+    \item Aggregates values into a PostgreSQL array
+    \item Syntax:
+\begin{verbatim}
+ARRAY_AGG(column)
+\end{verbatim}
+    \item Example:
+\begin{verbatim}
+SELECT ARRAY_AGG(product)
+FROM Activities;
+\end{verbatim}
+    \item With DISTINCT and ordering:
+\begin{verbatim}
+SELECT ARRAY_AGG(DISTINCT product ORDER BY product)
+FROM Activities;
+\end{verbatim}
+    \item Common use: when you need a true list for further processing
+\end{itemize}
+
+% ================= SIMILAR TO =================
+\subsection{SIMILAR TO}
+\begin{itemize}
+    \item Purpose: Pattern matching operator in PostgreSQL that combines aspects of \texttt{LIKE} and regular expressions.
+    \item Use Case: Used when simple pattern matching is needed without full regex complexity.
+    \item Syntax: Uses SQL-style wildcards (\% and \_) and supports limited regex-like constructs.
+\end{itemize}
+
+\begin{verbatim}
+SELECT *
+FROM Users
+WHERE email SIMILAR TO '[A-Za-z][A-Za-z0-9._-]*@leetcode\.com';
+\end{verbatim}
+
+\begin{itemize}
+    \item Note: SIMILAR TO is stricter than LIKE but less powerful than regex (~).
+\end{itemize}
+
+% ================= ~ (REGEX MATCH) =================
+\subsection{\textasciitilde{} (Regex Match Operator)}
+\begin{itemize}
+    \item Purpose: Performs full POSIX regular expression matching in PostgreSQL.
+    \item Use Case: Used for advanced string validation, parsing, and pattern enforcement.
+    \item Operators:
+    \begin{itemize}
+        \item \texttt{\textasciitilde{}} → matches regex (case-sensitive)
+        \item \texttt{\textasciitilde*} → matches regex (case-insensitive)
+        \item \texttt{!\textasciitilde} → does NOT match regex
+        \item \texttt{!\textasciitilde{}*} → does NOT match regex (case-insensitive)
+    \end{itemize}
+\end{itemize}
+
+\begin{verbatim}
+SELECT user_id, name, mail
+FROM Users
+WHERE mail ~ '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\.com$';
+\end{verbatim}
+
+\begin{itemize}
+    \item Note: Preferred over SIMILAR TO when complex validation rules are required.
+\end{itemize}
+
+More examples: 
+\begin{itemize}
+    \item \texttt{\textasciitilde{}} → matches regex (case-sensitive)
+
+\begin{verbatim}
+WHERE mail ~ '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\.com$'
+\end{verbatim}
+
+    \item \texttt{\textasciitilde*} → matches regex (case-insensitive)
+
+\begin{verbatim}
+WHERE mail ~* '^[a-z][a-z0-9_.-]*@leetcode\.com$'
+\end{verbatim}
+
+    \item \texttt{!\textasciitilde} → does NOT match regex
+
+\begin{verbatim}
+WHERE mail !~ '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\.com$'
+\end{verbatim}
+
+    \item \texttt{!\textasciitilde{}*} → does NOT match regex (case-insensitive)
+
+\begin{verbatim}
+WHERE mail !~* '^[a-z][a-z0-9_.-]*@leetcode\.com$'
+\end{verbatim}
+\end{itemize}
+
+\end{document}
+
+
